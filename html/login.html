@@ -3,13 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta porperty="og:image:width" content="1200">
+    <meta porperty="og:image:head" content="630">
+    <title>NAVER-login</title>
     <link rel="shortcut icon" type="image/x-icon" href="/imgs/favicon.ico">
-    <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/login.css">
-    <title>login page</title>
+    <script defer src="/js/app.js"></script>
 </head>
 <body>
-    
+    <div id="wrap" class="wrap">
+        <header class="header" role="banner">
+            <div class="header_inner">
+                <a href="/index.html" class="logo">
+                    <h1 class="blind">NAVER</h1>
+                </a>
+                <div class="lang" id="show_locale_switch">
+                    <select name="locale_switch" id="locale_switch" title="언어선택" class="sel">
+                        <option value="ko_KR">한국어</option>
+                        <option value="en_US">English</option>
+                        <option value="zh-Hans_CN">中文(简体)</option>
+                        <option value="zh-Hant_TW">中文(台灣)</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+        <!-- 콘텐츠 -->
+        <div id="container" class="container">
+            <div class="content">
+                <div class="login_wrap">
+                    <ul class="menu_wrap" role="tablist">
+                        <li class="menu_item" role="presentation">
+                            <a href="#none" id="loinid" class="menu_id on" role="tab">
+                                <span class="menu_text">
+                                    <span class="text">ID 로그인</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu_item" role="presentation">
+                            <a href="#none" id="ones" class="menu_ones" role="tab">
+                                <span class="menu_text">
+                                    <span class="text">일회용 번호</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu_item" role="presentation">
+                            <a href="#none" id="qrcode" class="menu_qr" role="tab">
+                                <span class="menu_text">
+                                    <span class="text">QR코드</span>
+                                </span>
+                            </a>
+                            <div class="nudge_banner" id="nudge_tooltip">
+                                <span class="nudge_text">PC방 등 공용PC라면 QR코드 로그인이 더 안전해요.</span>
+                                <button type="button" id="nudge_close" class="nudge_close">
+                                    <span class="icon_nudge_close"></span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+
+                <!-- 로그인&비밀번호 입력 파트 -->
+                    <form id="frmNIDLogin" name="frmNIDLogin" target="_top" autocomplete="off" action="#" method="post">
+                        <ul class="panel_wrap">
+                            <li class="panel_item" style="display: block;">
+                                <div class="panel_inner" role="tabpanel">
+                                    <div class="id_pw_wrap">
+                                        <div class="input_row" id="id_line">
+                                            <div class="icon_cell" id="id_cell">
+                                                <span class="icon_id">
+                                                    <span class="blind">아이디</span>
+                                                </span>
+                                            </div>
+                                            <input type="text" required="required" id="id" name="id" placeholder="아이디" title="아이디" class="input_text" maxlength="41">
+                                            <span role="button" class="btn_delete" id="id_clear">
+                                                <span class="icon_delete">
+                                                    <span class="blind">삭제버튼</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="input_row" id="pw_line">
+                                            <div class="icon_cell" id="pw_cell">
+                                                <span class="icon_pw">
+                                                    <span class="blind">비밀번호</span>
+                                                </span>
+                                            </div>
+                                            <input type="password" id="pw" name="pw" placeholder="비밀번호" title="비밀번호" class="input_text" maxlength="16">
+                                            <span role="button" class="btn_delete" id="pw_clear">
+                                                <span class="icon_delete">
+                                                    <span class="blind">삭제버튼</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="login_keep_wrap" id="login_keep_wrap">
+                                        <div class="keep_check">
+                                            <input type="checkbox" id="keep" name="nvlong" class="input_keep">
+                                            <label for="id_check" class="keep_text">
+                                                로그인 상태 유지
+                                            </label>
+                                        </div>
+                                        <div class="ip_check">
+                                            <a href="#" id="ipguid" title="IP보안">
+                                                <span class="ip_text">IP보안</span>
+                                            </a>
+                                            <span class="switch">
+                                                <input type="checkbox" id="switch" class="switch_checkbox">
+                                                <label for="switch" class="switch_btn"></label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="btn_login_wrap">
+                                        <button type="submit" class="btn_login" id="log.login">
+                                            <span class="btn_text">로그인</span>
+                                        </button>
+                                    </div>
+                                </div>  
+                            </li>
+                        </ul>
+                    </form>
+                    <!-- 끝 -->
+
+                </div>
+                <ul class="find_warp" id="find_wrap">
+                    <li>
+                        <a href="#" class="find_text">비밀번호 찾기</a>
+                    </li>
+                    <li>
+                        <a href="#" class="find_text">아이디 찾기</a>
+                    </li>
+                    <li>
+                        <a href="#" class="find_text">회원가입</a>
+                    </li>
+                </ul>
+                <!-- 배너 -->
+                <div id="gladbanner" class="banner_wrap">
+                    <div style="width: 100%; height: auto; margin: 0px; line-height: 0;">
+                        <a href="#" style="display: block; text-align: center;">
+                            <img src="/imgs/login_add.png" alt="광고배너" style="vertical-align: top; width: 100%; height: auto; border: none;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer_inner">
+                <ul class="footer_link" id="footer_link">
+                    <li>
+                        <a href="#" class="footer_item">
+                            <span class="text">이용약관</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer_item">
+                            <span class="text"><strong>개인정보처리방침</strong></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer_item">
+                            <span class="text">책임의 한계와 법적고지</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer_item">
+                            <span class="text">회원정보 고객센터</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer_copy">
+                    <a href="#">
+                        <span class="footer_logo">
+                            <span class="blind">네이버</span>
+                        </span>
+                        <span class="text">Copyright</span>
+                        <span class="corp">&copy; NAVER Corp.</span>
+                        <span class="text">All Rights Reserved.</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

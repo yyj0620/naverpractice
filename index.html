@@ -7,6 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/imgs/favicon.ico">
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/tab.css">
+    <script src="/js/app.js" defer></script>
     <title>NAVER-practice</title>
 </head>
 <body>
@@ -14,6 +16,7 @@
         <div id="header" role="banner" class="ani_fixed">
             <div id="topSearchWrap" class="header_inner">
                 <div id="search_area" class="search_area">
+                    <!-- 검색창 -->
                     <div class="search_group">
                         <div id="search" class="search_group_inner">
                             <h1 id="spesial-input-logo" class="search_logo">
@@ -25,7 +28,7 @@
                                 <fieldset>
                                     <div class="search_input_box">
                                         <input type="hidden" name="where" nexearch>
-                                        <input id="query" name="query" type="search" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." maxlength="255" autocomplete="off" class="search_input">
+                                        <input id="query"  class="search_input" name="query" type="search" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." maxlength="255" autocomplete="off">
                                     </div>
                                     <button type="submit" class="btn_search">
                                         <span id="search-btn" class="ico_btn_search"></span>
@@ -136,189 +139,997 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div id="newsstand" class="Layout-module__content_area___b_3TU">
+                        <!-- 탭 wrap부분 -->
                         <div class="ContentHeaderView-module__content_header___nSgPg">
                             <div class="ContentHeaderView-module__header_tab___WW6fU">
-                                <ul class="ContentHeaderView-module__tab_list___BWrWe" role="tablist">
+                                <ul class="ContentHeaderView-module__tab_list___BWrWe" role="tablist"  style="overflow: hidden; max-height: 224px;">
+
+                                    <!-- tab-link 부분 -->
+                                    <!-- 네이버랑 구조 똑같이 만든 것 -->
                                     <li class="ContentHeaderView-module__tab_item___dz3nK" role="presentation">
                                         <span class="ContentHeaderView-module__tab___uYoni type_news">
-                                            <a href="#" class="ContentHeaderView-module__tab_text__IuWng" role="tab">뉴스스탠드</a>
-                                            <a href="#" class="ContentHeaderView-module__tab_text__IuWng bbb" role="tab">언론사편집</a>
+                                            <!-- a href ="#" 클릭시 href가 가진 기본 속성 때문에 최상단으로 스크롤됨
+                                                따라서 자바스크립트로 아무런 기능을 하지 않게(void 값을 0으로 설정) 해주는 명령어가 필요 href="javascript:void(0)" -->
+                                            <a href="javascript:void(0)" class="ContentHeaderView-module__tab_text__IuWng current" role="tab" onclick="tabList(this)" data-tab="tab1">뉴스스탠드</a>
+                                            <a href="javascript:void(0)" class="ContentHeaderView-module__tab_text__IuWng" role="tab"  onclick="tabList(this)" data-tab="tab2">언론사편집</a>
                                         </span>
                                     </li>
+                                    <!-- 아직안한 나머지 탭 패널들 -->
                                     <li class="ContentHeaderView-module__tab_item___dz3nK" role="presentation">
-                                        <a href="#" class="ContentHeaderView-module__tab___uYoni" role="tab">엔터</a>
+                                        <a href="javascript:void(0)" class="ContentHeaderView-module__tab___uYoni" role="tab" onclick="tabList(this)" data-tab="tab3">엔터</a>
                                     </li>
                                     <li class="ContentHeaderView-module__tab_item___dz3nK" role="presentation">
-                                        <a href="#" class="ContentHeaderView-module__tab___uYoni" role="tab">스포츠
+                                        <a href="javascript:void(0)" class="ContentHeaderView-module__tab___uYoni" role="tab" onclick="tabList(this)" data-tab="tab4">스포츠
                                             <span class="ContentHeaderView-module__tab_live___w3Oyc">LIVE</span>
                                         </a>
                                     </li>
                                     <li class="ContentHeaderView-module__tab_item___dz3nK" role="presentation">
-                                        <a href="#" class="ContentHeaderView-module__tab___uYoni" role="tab">경제</a>
+                                        <a href="javascript:void(0)" class="ContentHeaderView-module__tab___uYoni" role="tab" onclick="tabList(this)" data-tab="tab5">경제</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                        
+                        <!-- tab-content부분 -->
+                        <!--1번 뉴스스탠드 -->
+                        <div id="tab1" class="newsstandWrap current" role="tabpanel">
+                        <!-- 주요뉴스부분 -->
                         <div class="ContentHeaderSubView-module__content_header_sub___Yszwk">
-                            <a href="#" class="ContentHeaderSubView-module__btn_more___HnWNR" role="button">전체 언론사
+                            <a href="#" class="ContentHeaderSubView-module__btn_more___HnWNR" role="button">전체언론사
                                 <i class="ContentHeaderSubView-module__ico_triangle___ObyFF"></i>
                             </a>
-                            <div class="ContentHeaderSubView-module__sud_news___DECMU">
+                            <div class="ContentHeaderSubView-module__sub_news___DECMU">
                                 <div class="AutoRolling-module__rolling-y___T3kmw" style="animation-duration: 0.5s;">
                                     <div class="ContentHeaderSubView-module_news_box___dH9b3">
                                         <a href="#" class="ContentHeaderSubView-module__news_media___YJm6A" >반짝뉴스</a>
                                         <div class="ContentHeaderSubView-module__news_desc___ztwqZ">
-                                            <div class="ContentHeaderSubView-module__news_title___wuetX">
-                                                <a href="#">"뉴스뉴스뉴스 뉴스 내용" 오늘은 2023년 12월 아주 추운 겨울입니다. 시간은 10시 13분입니다. 뉴스뉴스</a>
+                                            <span class="ContentHeaderSubView-module__news_breaking___DZkm4">
+                                                속보
+                                            </span>
+                                            <div class="ContentHeaderSubView-module__news_title___wuetX breaking_news">
+                                                <a href="#">10월부터 한강에 리버버스 달린다. '뉴스뉴스뉴스뉴스' </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>    
                             </div>
                             <div class="ContentHeaderSubView-module__sub_home___QWIkL">
+                                <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg ContentHeaderSubView-module__sub___T9JeN">뉴스스탠드</a>
                                 <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg">뉴스홈</a>
                             </div>
                         </div>
-                        <div class="MediaView-module__media_area___Z4js3" role="tabpanel">
-                            <div class="MediaContentsView-module__media_contents___GqCNo">
-                                <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224px;">
-                                    <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
-                                        <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
-                                            <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
-                                                <img src="imgs/newsimg.jpg" width="156" height="104">
-                                            </span>
-                                        </a>
-                                        <div class="MediaContentsView-module__media_info___0iNVg">
-                                            <div class="MediaContentsView-module__info_top___OSBCn">
-                                                <span class="MediaContentsView-module__top_thumb___gSRg3">
-                                                    <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
-                                                </span>
-                                                <a href="#" class="MediaContentsView-module__link_press___YwfNb">
-                                                    뉴스회사이름1
-                                                </a>
-                                                <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
+
+                            <div class="MediaView-module__media_area___Z4js3">
+                                <div class="MediaSubscriptionView-module__media_subscription___gvTm0">
+                                    <div class="MediaSubscriptionView-module__subscription_frame___Nu1Oa">
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_right1___EZAey"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_right2___O7ORm"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_right3___S3_jO"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_bottom1___AiLtl"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_bottom2___Q5bT5"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_bottom3___GwFQM"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_bottom4___ak3_p"></i>
+                                        <i class="MediaSubscriptionView-module__line___tuzjF MediaSubscriptionView-module__to_bottom5___W7aRs"></i>
+                                    </div>
+                                    <div class="MediaSubscriptionView-module__subscription_group___peb21">
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="이데일리" class="news_logo">
                                             </div>
-                                            <a href="#" class="MediaContentsView-module__info_title___vdgEM">
-                                                강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
-                                            </a>
-                                            <div class="MediaContentsView-module__info_desc___mMXww">
-                                                <div class="MediaContentsView-module__desc_text___InEJG">
-                                                    <span class="MediaContentsView-module__text___HFcZk">
-                                                        12월 11일 11:07
-                                                    </span>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    </li>
-                                    <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
-                                    <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
-                                        <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
-                                            <img src="imgs/newsimg.jpg" width="156" height="104">
-                                        </span>
-                                    </a>
-                                    <div class="MediaContentsView-module__media_info___0iNVg">
-                                        <div class="MediaContentsView-module__info_top___OSBCn">
-                                            <span class="MediaContentsView-module__top_thumb___gSRg3">
-                                                <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
-                                            </span>
-                                            <a href="#" class="MediaContentsView-module__link_press___YwfNb">
-                                                뉴스회사이름2
-                                            </a>
-                                            <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_02.png" height="20" alt="SBS" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <a href="#" class="MediaContentsView-module__info_title___vdgEM">
-                                            강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
-                                        </a>
-                                        <div class="MediaContentsView-module__info_desc___mMXww">
-                                            <div class="MediaContentsView-module__desc_text___InEJG">
-                                                <span class="MediaContentsView-module__text___HFcZk">
-                                                    12월 11일 11:07
-                                                </span>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_03.png" height="20" alt="데일리안" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_04.png" height="20" alt="스포츠서울" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_05.png" height="20" alt="JTBC" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_06.png" height="20" alt="세계일보" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_07.png" height="20" alt="경향신문" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="MBC" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="마이데일리" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="미디어오늘" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="전자신문" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="한겨레" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="서울신문" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="스포츠동아" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="중앙데일리" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="뉴스포스트" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="뉴스펭귄" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="소년한국일보" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="한국농어촌방송" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="헬스조선" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="약사공론" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="뉴스클레임" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="넥스트데일리" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MediaSubscriptionView-module__subscription_box___z8NuT">
+                                            <div class="MediaSubscriptionView-module__news_thumb___IA4y2">
+                                                <img src="/imgs/news_thumbs_01.png" height="20" alt="초이스경제" class="news_logo">
+                                            </div>
+                                            <div class="hoverWrap">
+                                                <div class="MediaSubscriptionView-module__news_info___aQPRi">
+                                                    <a href="" role="button" class="MediaSubscriptionView-module__info_text___19eoA">구독</a>
+                                                    <a href="" class="MediaSubscriptionView-module__info_text___19eoA">기사보기</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </li>
-                                </ul>
+
+                                </div>
                             </div>
-                            <div class="MediaContentsView-module__media_contents___GqCNo">
-                                <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224ps;">
-                                    <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
-                                        <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
-                                            <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
-                                                <img src="imgs/newsimg.jpg" width="156" height="104">
-                                            </span>
-                                        </a>
-                                        <div class="MediaContentsView-module__media_info___0iNVg">
-                                            <div class="MediaContentsView-module__info_top___OSBCn">
-                                                <span class="MediaContentsView-module__top_thumb___gSRg3">
-                                                    <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
-                                                </span>
-                                                <a href="#" class="MediaContentsView-module__link_press___YwfNb">
-                                                    뉴스회사이름3
-                                                </a>
-                                                <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
-                                            </div>
-                                            <a href="#" class="MediaContentsView-module__info_title___vdgEM">
-                                                강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
-                                            </a>
-                                            <div class="MediaContentsView-module__info_desc___mMXww">
-                                                <div class="MediaContentsView-module__desc_text___InEJG">
-                                                    <span class="MediaContentsView-module__text___HFcZk">
-                                                        12월 11일 11:07
-                                                    </span>
+                            <!-- 언론사더보기 -->
+                            <div class="ContentPageView-module__content_paging___QIMwB current">
+                                <button type="button" class="ContentPageView-module__btn_prev___JaBFN"></button>
+                                <div class="ContentPageView-module__content_page___ZM2wA">
+                                    <span class="ContentPageView-module__text___uJNhb">
+                                        <span class="ContentPageView-module__point___U2tUD">언론사</span> 더보기
+                                    </span>
+                                    <span class="current">1</span>
+                                    <span class="ContentPageView-module__total___Huvt2">/4</span>
+                                </div>
+                                <button type="button" class="ContentPageView-module__btn_next___JBhby"></button>
+                            </div>
+                        </div>
+                        
+                        <!--2번 언론사편집 -->
+                        <div id="tab2" class="newsstandWrap" role="tabpanel">
+                            <!-- 주요뉴스부분 -->
+                            <div class="ContentHeaderSubView-module__content_header_sub___Yszwk">
+                                <a href="#" class="ContentHeaderSubView-module__btn_more___HnWNR" role="button">분야별 뉴스
+                                    <i class="ContentHeaderSubView-module__ico_triangle___ObyFF"></i>
+                                </a>
+                                <div class="ContentHeaderSubView-module__sub_news___DECMU">
+                                    <div class="AutoRolling-module__rolling-y___T3kmw" style="animation-duration: 0.5s;">
+                                        <div class="ContentHeaderSubView-module_news_box___dH9b3">
+                                            <a href="#" class="ContentHeaderSubView-module__news_media___YJm6A" >달롱뉴스</a>
+                                            <div class="ContentHeaderSubView-module__news_desc___ztwqZ">
+                                                <!-- <span class="ContentHeaderSubView-module__news_breaking___DZkm4">
+                                                    속보
+                                                </span> -->
+                                                <div class="ContentHeaderSubView-module__news_title___wuetX">
+                                                    <a href="#">"뉴스뉴스뉴스 뉴스 내용!" 귀여운 달롱이 입니다. 뉴스뉴스뉴스 </a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
-                                        <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
-                                            <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
-                                                <img src="imgs/newsimg.jpg" width="156" height="104">
-                                            </span>
-                                        </a>
-                                        <div class="MediaContentsView-module__media_info___0iNVg">
-                                            <div class="MediaContentsView-module__info_top___OSBCn">
-                                                <span class="MediaContentsView-module__top_thumb___gSRg3">
-                                                    <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
-                                                </span>
-                                                <a href="#" class="MediaContentsView-module__link_press___YwfNb">
-                                                    뉴스회사이름4
-                                                </a>
-                                                <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
-                                            </div>
-                                            <a href="#" class="MediaContentsView-module__info_title___vdgEM">
-                                                강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
-                                            </a>
-                                            <div class="MediaContentsView-module__info_desc___mMXww">
-                                                <div class="MediaContentsView-module__desc_text___InEJG">
-                                                    <span class="MediaContentsView-module__text___HFcZk">
-                                                        12월 11일 11:07
+                                    </div>    
+                                </div>
+                                <div class="ContentHeaderSubView-module__sub_home___QWIkL">
+                                    <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg">뉴스홈</a>
+                                </div>
+                            </div>
+
+                            <div class="MediaView-module__media_area___Z4js3">
+                                <!-- 아래의 리스트들이 flex가 되어야하면 div로 감싸는게 조금 더 안정적이다. -->
+                                <div class="flex">
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224px;">
+                                            <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
+                                                        <img src="imgs/newsimg.jpg" width="156" height="104">
                                                     </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg">
+                                                    <div class="MediaContentsView-module__info_top___OSBCn">
+                                                        <span class="MediaContentsView-module__top_thumb___gSRg3">
+                                                            <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
+                                                        </span>
+                                                        <a href="#" class="MediaContentsView-module__link_press___YwfNb">
+                                                            뉴스회사이름1
+                                                        </a>
+                                                        <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
+                                                    </div>
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">
+                                                                12월 11일 11:07
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            </li>
+                                            <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
+                                            <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
+                                                    <img src="imgs/newsimg.jpg" width="156" height="104">
+                                                </span>
+                                            </a>
+                                            <div class="MediaContentsView-module__media_info___0iNVg">
+                                                <div class="MediaContentsView-module__info_top___OSBCn">
+                                                    <span class="MediaContentsView-module__top_thumb___gSRg3">
+                                                        <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
+                                                    </span>
+                                                    <a href="#" class="MediaContentsView-module__link_press___YwfNb">
+                                                        뉴스회사이름2
+                                                    </a>
+                                                    <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
+                                                </div>
+                                                <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                    강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
+                                                </a>
+                                                <div class="MediaContentsView-module__info_desc___mMXww">
+                                                    <div class="MediaContentsView-module__desc_text___InEJG">
+                                                        <span class="MediaContentsView-module__text___HFcZk">
+                                                            12월 11일 11:07
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224ps;">
+                                            <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
+                                                        <img src="imgs/newsimg.jpg" width="156" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg">
+                                                    <div class="MediaContentsView-module__info_top___OSBCn">
+                                                        <span class="MediaContentsView-module__top_thumb___gSRg3">
+                                                            <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
+                                                        </span>
+                                                        <a href="#" class="MediaContentsView-module__link_press___YwfNb">
+                                                            뉴스회사이름3
+                                                        </a>
+                                                        <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
+                                                    </div>
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">
+                                                                12월 11일 11:07
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 156px; height: 104px;">
+                                                        <img src="imgs/newsimg.jpg" width="156" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg">
+                                                    <div class="MediaContentsView-module__info_top___OSBCn">
+                                                        <span class="MediaContentsView-module__top_thumb___gSRg3">
+                                                            <img src="imgs/newslogo.png" width="24" height="24" alt="뉴스작은로고">
+                                                        </span>
+                                                        <a href="#" class="MediaContentsView-module__link_press___YwfNb">
+                                                            뉴스회사이름4
+                                                        </a>
+                                                        <button type="button" class="MediaContentsView-module__btn_subscribe___pO3ZO">구독</button>
+                                                    </div>
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        강원 북부산지에 '대설경보' 최대 50cm... 삼척&middot;북부산지 호우주의보 유지
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">
+                                                                12월 11일 11:07
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 언론사더보기 -->
+                            <div class="ContentPageView-module__content_paging___QIMwB">
+                                <button type="button" class="ContentPageView-module__btn_prev___JaBFN"></button>
+                                <div class="ContentPageView-module__content_page___ZM2wA">
+                                    <span class="ContentPageView-module__text___uJNhb">
+                                        <span class="ContentPageView-module__point___U2tUD">언론사</span> 더보기
+                                    </span>
+                                    <span class="current">1</span>
+                                    <span class="ContentPageView-module__total___Huvt2">/21</span>
+                                </div>
+                                <button type="button" class="ContentPageView-module__btn_next___JBhby"></button>
+                            </div>
+                        </div>
+
+                        <!--3번 엔터-->
+                        <div id="tab3" class="newsstandWrap" role="tabpanel">
+                            <!-- 주요뉴스부분 -->
+                            <div class="ContentHeaderSubView-module__content_header_sub___Yszwk ContentHeaderSubView-module__type_enter___fHZXq">
+                                <div class="ContentHeaderSubView-module__sub_tab___Gyw9W">
+                                    <ul class="ContentHeaderSubView-module__tab_list___hd01s">
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">네이버TV</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">시리즈온</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">VIBE</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ContentHeaderSubView-module__sub_home___QWIkL">
+                                    <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg">연예홈</a>
+                                </div>
+                            </div>
+                            
+                            <!-- content부분 -->
+                            <div class="MediaView-module__media_area___Z4js3">
+                                <div class="flex">
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224px;">
+                                            <li class="MediaContentsView-module__media_item___CDT_f">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 185px; height: 104px;">
+                                                        <img src="imgs/enter01.jpg" width="185" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg MediaContentsView-module__type_cluster___zk60I">
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        "무엇을 상상하든 그 이상"...'아가일' 매튜 본 감독, 韓사랑 스파이홀릭의 자신감
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">마이데일리</span>
+                                                            <span class="MediaContentsView-module__text___HFcZk">1시간 전</span>
+                                                        </div>
+                                                        <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                            <span class="MediaContentsView-module__num___E2ydP">26</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 185px; height: 104px;">
+                                                        <img src="imgs/enter01.jpg" width="185" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg MediaContentsView-module__type_cluster___zk60I">
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        "무엇을 상상하든 그 이상"...'아가일' 매튜 본 감독, 韓사랑 스파이홀릭의 자신감
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">마이데일리</span>
+                                                            <span class="MediaContentsView-module__text___HFcZk">1시간 전</span>
+                                                        </div>
+                                                        <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                            <span class="MediaContentsView-module__num___E2ydP">30</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__article_list___XDmC">
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        반짝뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                    <span class="MediaContentsView-module__num___E2ydP">18</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        반짝뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                    <span class="MediaContentsView-module__num___E2ydP">38</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        반짝뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                    <span class="MediaContentsView-module__num___E2ydP">5</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        반짝뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                    <span class="MediaContentsView-module__num___E2ydP">11</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        반짝뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                    <span class="MediaContentsView-module__num___E2ydP">2</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        반짝뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs MediaContentsView-module__type_enter___Xk8g9">
+                                                    <span class="MediaContentsView-module__num___E2ydP">4</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 언론사더보기 -->
+                            <div class="ContentPageView-module__content_paging___QIMwB">
+                                <button type="button" class="ContentPageView-module__btn_prev___JaBFN"></button>
+                                <div class="ContentPageView-module__content_page___ZM2wA">
+                                    <span class="ContentPageView-module__text___uJNhb">
+                                        <span class="ContentPageView-module__point___U2tUD ContentPageView-module__type_enter___H_zyG">연예 소식</span> 더보기
+                                    </span>
+                                    <span class="current">1</span>
+                                    <span class="ContentPageView-module__total___Huvt2">/3</span>
+                                </div>
+                                <button type="button" class="ContentPageView-module__btn_next___JBhby"></button>
+                            </div>
+                        </div>
+
+                        <!--4번 스포츠-->
+                        <div id="tab4" class="newsstandWrap" role="tabpanel">
+                            <!-- 주요뉴스부분 -->
+                            <div class="ContentHeaderSubView-module__content_header_sub___Yszwk ContentHeaderSubView-module__type_enter___fHZXq">
+                                <div class="ContentHeaderSubView-module__sub_tab___Gyw9W">
+                                    <ul class="ContentHeaderSubView-module__tab_list___hd01s">
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">야구</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">해외야구</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">아시안컵</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">축구</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">해외축구</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">농구</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">배구</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">N골프</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">일반</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">e스포츠</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ContentHeaderSubView-module__sub_home___QWIkL">
+                                    <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg ContentHeaderSubView-module__sub___T9JeN">커뮤니티</a>
+                                    <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg">스포츠홈</a>
+                                </div>
+                            </div>
+                            
+                            <!-- content부분 -->
+                            <div class="MediaView-module__media_area___Z4js3">
+                                <div class="flex">
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224px;">
+                                            <li class="MediaContentsView-module__media_item___CDT_f">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 185px; height: 104px;">
+                                                        <img src="imgs/sports01.jpg" width="185" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg MediaContentsView-module__type_cluster___zk60I">
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        [청소년올림핌] 부상도 이겨낸 '금빛연기'...밀라노 희망도 반짝!
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">연합뉴스</span>
+                                                            <span class="MediaContentsView-module__text___HFcZk">30분 전</span>
+                                                        </div>
+                                                        <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                            <span class="MediaContentsView-module__num___E2ydP">17</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="MediaContentsView-module__media_item___CDT_f MediaContentsView-module__type_news___xQavv">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 185px; height: 104px;">
+                                                        <img src="imgs/sports01.jpg" width="185" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg MediaContentsView-module__type_cluster___zk60I">
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        '태권도 신성' 대한민국 태권도 뉴스뉴스뉴스 등장! 태권도태권도
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">스포츠월드</span>
+                                                            <span class="MediaContentsView-module__text___HFcZk">56분 전</span>
+                                                        </div>
+                                                        <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                            <span class="MediaContentsView-module__num___E2ydP">16</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__article_list___XDmC">
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 유럽 잔류 가능할까... 고민 중</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        달롱뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                    <span class="MediaContentsView-module__num___E2ydP">18</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스.. 올 해 최고의 뉴스 뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        달롱뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                    <span class="MediaContentsView-module__num___E2ydP">38</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스 새소식 뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        달롱뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                    <span class="MediaContentsView-module__num___E2ydP">5</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        달롱뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                    <span class="MediaContentsView-module__num___E2ydP">11</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        달롱뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                    <span class="MediaContentsView-module__num___E2ydP">2</span>
+                                                </a>
+                                            </li>
+                                            <li class="MediaContentsView-module__article_item___t3WdW">
+                                                <span class="MediaContentsView-module__item_title___YPFK6">
+                                                    <a href="#" class="MediaContentsView-module__link_title___MTCcN">'뉴스기사뉴스' 기사뉴스..뉴스 뉴스뉴스 뉴스뉴스뉴스뉴스</a>
+                                                    <span class="MediaContentsView-module__text___HFcZk">
+                                                        달롱뉴스
+                                                    </span>
+                                                </span>
+                                                <a href="#" class="MediaContentsView-module__link_cluster___bjOSs">
+                                                    <span class="MediaContentsView-module__num___E2ydP">4</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 언론사더보기 -->
+                            <div class="ContentPageView-module__content_paging___QIMwB">
+                                <button type="button" class="ContentPageView-module__btn_prev___JaBFN"></button>
+                                <div class="ContentPageView-module__content_page___ZM2wA">
+                                    <span class="ContentPageView-module__text___uJNhb">
+                                        <span class="ContentPageView-module__point___U2tUD">스포츠 소식</span> 더보기
+                                    </span>
+                                    <span class="current">1</span>
+                                    <span class="ContentPageView-module__total___Huvt2">/3</span>
+                                </div>
+                                <button type="button" class="ContentPageView-module__btn_next___JBhby"></button>
+                            </div>
+                        </div>
+                        
+                        <!-- 5번 경제 -->
+                        <div id="tab5" class="newsstandWrap" role="tabpanel">
+                            <!-- 주요뉴스부분 -->
+                            <div class="ContentHeaderSubView-module__content_header_sub___Yszwk ContentHeaderSubView-module__type_enter___fHZXq">
+                                <div class="ContentHeaderSubView-module__sub_tab___Gyw9W">
+                                    <ul class="ContentHeaderSubView-module__tab_list___hd01s">
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">국내증시</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">해외증시</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">시장지표</a>
+                                        </li>
+                                        <li class="ContentHeaderSubView-module__tab_item___XykTR">
+                                            <a href="#" class="ContentHeaderSubView-module__tab___aFAJ4">관심종목</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ContentHeaderSubView-module__sub_home___QWIkL">
+                                    <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg economy_sidegap">증권홈</a>
+                                    <a href="#" class="ContentHeaderSubView-module__link_home___hdZDg">부동산홈</a>
+                                </div>
+                            </div>
+                            
+                            <!-- content부분 -->
+                            <div class="MediaView-module__media_area___Z4js3">
+                                <div class="flex">
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <ul class="MediaContentsView-module__media_list___bEcVz" style="overflow: hidden; max-height: 224px;">
+                                            <li class="MediaContentsView-module__media_item___CDT_f">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 185px; height: 104px;">
+                                                        <img src="imgs/economy01.jpg" width="185" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg MediaContentsView-module__type_cluster___zk60I">
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        물가 6개월 만에 2%대지만...사과&middot;귤 등 신선과일 1000% 깡충
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">반짝스</span>
+                                                            <span class="MediaContentsView-module__text___HFcZk">30분 전</span>
+                                                        </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="MediaContentsView-module__media_item___CDT_f">
+                                                <a href="#" class="MediaContentsView-module__link_thumb___Kldt1">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width: 185px; height: 104px;">
+                                                        <img src="imgs/economy02.jpg" width="185" height="104">
+                                                    </span>
+                                                </a>
+                                                <div class="MediaContentsView-module__media_info___0iNVg MediaContentsView-module__type_cluster___zk60I">
+                                                    <a href="#" class="MediaContentsView-module__info_title___vdgEM">
+                                                        물가 6개월 만에 2%대지만...사과&middot;귤 등 신선과일 1000% 깡충
+                                                    </a>
+                                                    <div class="MediaContentsView-module__info_desc___mMXww">
+                                                        <div class="MediaContentsView-module__desc_text___InEJG">
+                                                            <span class="MediaContentsView-module__text___HFcZk">반짝스</span>
+                                                            <span class="MediaContentsView-module__text___HFcZk">17분 전</span>
+                                                        </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="MediaContentsView-module__media_contents___GqCNo">
+                                        <div class="MediaContentsView-module__media_econ___A27Qy">
+                                            <div class="MediaContentsView-module__econ_stock___TsMDB">
+                                                <div class="MediaContentsView-module__stock_box___OlVNk">
+                                                    <a href="#" class="MediaContentsView-module__link_stock___Ca0Br MediaContentsView-module__up___MU_LX">
+                                                        <div class="MediaContentsView-module__title___LzSKl">코스피</div>
+                                                        <div class="MediaContentsView-module__price___Oxo3P">2,575.01</div>
+                                                        <span class="MediaContentsView-module__rate___VjacI">+1.28%</span>
+                                                    </a>
+                                                </div>
+                                                <div class="MediaContentsView-module__stock_box___OlVNk">
+                                                    <a href="#" class="MediaContentsView-module__link_stock___Ca0Br MediaContentsView-module__up___MU_LX">
+                                                        <div class="MediaContentsView-module__title___LzSKl">코스닥</div>
+                                                        <div class="MediaContentsView-module__price___Oxo3P">2,816.42</div>
+                                                        <span class="MediaContentsView-module__rate___VjacI">+2.21%</span>
+                                                    </a>
+                                                </div>
+                                                <div class="MediaContentsView-module__stock_box___OlVNk">
+                                                    <a href="#" class="MediaContentsView-module__link_stock___Ca0Br MediaContentsView-module__up___MU_LX down">
+                                                        <div class="MediaContentsView-module__title___LzSKl"> S&P 500</div>
+                                                        <div class="MediaContentsView-module__price___Oxo3P">4,906.19</div>
+                                                        <span class="MediaContentsView-module__rate___VjacI down">-1.28%</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <ul class="MediaContentsView-module__econ_list___HwoT6">
+                                                <li class="MediaContentsView-module__econ_item___ZmYnA">
+                                                    <a href="" class="link_item">최상목 "2~3월" 물가, 3% 내외 뉴스뉴스...뉴스뉴스대책 추진추진</a>
+                                                </li>
+                                                <li class="MediaContentsView-module__econ_item___ZmYnA">
+                                                    <a href="" class="link_item">'영업정지 9개월'뉴스건설, 뉴스 뉴뉴스 슈뉴스!</a>
+                                                </li>
+                                                <li class="MediaContentsView-module__econ_item___ZmYnA">
+                                                    <a href="" class="link_item">뉴스 "3월 기준금리 인하 없다" 뉴스뉴스뉴스...시장은 '왈가왈부' 여전 </a>
+                                                </li>
+                                            </ul>
+                                            <div class="MediaContentsView-module__econ_text___FBeQX">오늘의 경제 헤드라인입니다.</div>
                                         </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 언론사더보기 -->
+                            <div class="ContentPageView-module__content_paging___QIMwB">
+                                <button type="button" class="ContentPageView-module__btn_prev___JaBFN"></button>
+                                <div class="ContentPageView-module__content_page___ZM2wA">
+                                    <span class="ContentPageView-module__text___uJNhb">
+                                        <span class="ContentPageView-module__point___U2tUD ContentPagingView-module__type_econ___bBgYH">경제 소식</span> 더보기
+                                    </span>
+                                    <span class="current">1</span>
+                                    <span class="ContentPageView-module__total___Huvt2">/4</span>
+                                </div>
+                                <button type="button" class="ContentPageView-module__btn_next___JBhby"></button>
                             </div>
                         </div>
-                        <div class="ContentPageView-module__content_paging___QIMwB">
-                            <!-- <div class="ContentPageView-module__content_view___SdRjS" role="radiogroup">
-                                <button type="button" class="ContentPageView-module__btn_view_list___j7eNR" role="radio"></button>
-                                <button type="button" class="ContentPageView-module__btn_view_thumb___zZhgR" role="radio"></button>
-                            </div> -->
-                            <button type="button" class="ContentPageView-module__btn_prev___JaBFN"></button>
-                            <div class="ContentPageView-module__content_page___ZM2wA">
-                                <span class="ContentPageView-module__text___uJNhb">
-                                    <span class="ContentPageView-module__point___U2tUD">언론사</span> 더보기
-                                </span>
-                                <span class="current">1</span>
-                                <span class="ContentPageView-module__total___Huvt2">/ 21</span>
-                            </div>
-                            <button type="button" class="ContentPageView-module__btn_next___JBhby"></button>
-                        </div>
+
                     </div>
+
+
 
 
                     <div id="shoppingbox" class="Layout-module__content_area___b_3TU">
@@ -383,8 +1194,8 @@
                                                         <button type="button" class="HotItem_btn_layer_open__Ex4Q9"></button>
                                                     </div>
                                                     <a href="#" class="HotItem_product_column_tw___8rrrp">
-                                                        <div class="HotItem_product_column_tt___yqpt">백화점BEST쿠션</div>
-                                                        <div class="HotItem_product_column_tt___yqpt">곧종료1만원대</div>
+                                                        <div class="HotItem_product_column_tt___yqpt">BEST 냠냠 체리</div>
+                                                        <div class="HotItem_product_column_tt___yqpt">곧 종료1만원대</div>
                                                     </a>
                                                 </div>
                                             </div>
@@ -714,19 +1525,19 @@
                         <div class="feed_area" role="tabpanel">
                             <div class="feed_box feed-four-column">
                                 <ul class="FourColumnView-module__common_list___daDm_">
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
                                                         <span class="name">축구선수멍멍이</span>
                                                     </span>
@@ -734,141 +1545,141 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="FourColumnView-module__common_item___AZCjQ">
-                                        <a href="#" class="FourColumnView-module__link_item___kg8z9">
-                                            <div class="FourColumnView-module__thumb___NilYx">
-                                                <span class="ImgView__content_img___QA0gl" style="width: 100%; height: 120px;">
+                                    <li class="FourColumnItemView-module__common_item___AZCjQ">
+                                        <a href="#" class="FourColumnItemView-module__link_item___kg8z9">
+                                            <div class="FourColumnItemView-module__thumb___NilYx">
+                                                <span class="ImgView-module__content_img___QA0gl" style="width: 100%; height: 120px;">
                                                     <img src="imgs/feed.jpg" width="100%" height="120" loading="lazy">
                                                 </span>
                                             </div>
-                                            <div class="FourColumnView-module__info___AUOzs">
-                                                <strong class="FourColumnView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
-                                                <div class="FourColumnView-module__source_box___z93a8">
-                                                    <span class="FourColumnView-module__source___VPoS4">
-                                                        <span class="FourColumnView-module__thumb___NilYx">
-                                                            <img src="imgs/feed_pro.png" width="20" height="20" class="FourColumnView-module__profile_img___eIjn7">
+                                            <div class="FourColumnItemView-module__info___AUOzs">
+                                                <strong class="FourColumnItemView-module__title___m5v48">유럽 5대리그 축구선수 평점 순위 TOP5</strong>
+                                                <div class="FourColumnItemView-module__source_box___z93a8">
+                                                    <span class="FourColumnItemView-module__source___VPoS4">
+                                                        <span class="FourColumnItemView-module__thumb___NilYx">
+                                                            <img src="imgs/feed.jpg" width="20" height="20" class="FourColumnItemView-module__profile_img___eIjn7">
                                                         </span>
-                                                        <span class="name">멍멍이</span>
+                                                        <span class="name">축구선수멍멍이</span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -885,7 +1696,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -902,7 +1713,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -919,7 +1730,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -936,7 +1747,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -953,7 +1764,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -970,7 +1781,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -987,7 +1798,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1004,7 +1815,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1021,7 +1832,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1038,7 +1849,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1055,7 +1866,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1072,7 +1883,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1089,7 +1900,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1106,7 +1917,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1123,7 +1934,7 @@
                                         <li class="SixColumnPosterView-module__common_item___pbFW8">
                                             <a href="#" class="SixColumnPosterView-module__link_item___soec8">
                                                 <div class="SixColumnPosterView-module__thumb___vQOfy">
-                                                    <span class="ImgView-module__content_img___Qa0gl" style="width:100%; height: 156px;">
+                                                    <span class="ImgView-module__content_img___QA0gl" style="width:100%; height: 156px;">
                                                     <img src="imgs/six.png" width="100%" height="156" loading="lazy">
                                                     </span>
                                                 </div>
@@ -1159,7 +1970,7 @@
                             <div id="account" class="Layout-module__content_area___b_3TU">
                                 <div class="MyView-module__my_login___tOYgr">
                                     <p class="MyView-module__login_text___G0Dzv">네이버를 더 안전하고 편리하게 이용하세요</p>
-                                    <a href="/html/login.html" class="MyView-module__link_login___HpHMW" target="_blank">
+                                    <a href="/html/login.html" class="MyView-module__link_login___HpHMW">
                                         <i class="MyView-module__naver_logo___Y442"></i>
                                         로그인
                                     </a>
@@ -1298,7 +2109,7 @@
                                         <button type="button" class="DailyBoardView-module__btn_info___Vnd0i"></button>
                                         <!-- <p class="DailyBoardView-module__layer_info___pHXnI"></p> -->
                                         <div class="DailyBoardView-module__header_aside___JAWQD">
-                                            12.21 12:34
+                                            01.01 12:34
                                             <button type="button" class="DailyBoardView-module__btn_refresh___YFJ90
                                             "></button>
                                         </div>

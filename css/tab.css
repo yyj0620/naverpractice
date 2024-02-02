@@ -1,0 +1,23 @@
+/* 헷갈려서 탭 용 css 빼둠 */
+
+.ContentHeaderView-module__tab_text__IuWng.current,
+.ContentHeaderView-module__tab___uYoni.current {
+    color: #000;
+}
+
+.newsstandWrap {
+    display: none;
+}
+
+.newsstandWrap.current {
+    display: block;
+}
+
+.newsstandWrap .MediaView-module__media_area___Z4js3 .flex{
+    display: flex;
+    width: 790px;
+}
+
+/* 
+탭 header를 눌렀을 때 tab content를 보여주기 위해 display: block속성을 지정해주었다.(공통)
+다만 flex와 같은 속성이 적용되어야 하는 디자인에는 개별적으로 display: flex를 적용할 수 있는 wapper로 한번 감싸는걸 추천.*/
